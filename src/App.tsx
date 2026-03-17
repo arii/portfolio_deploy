@@ -21,7 +21,8 @@ import {
   Users,
   Lightbulb,
   ChevronDown,
-  ChevronUp
+  ChevronUp,
+  FileText
 } from 'lucide-react';
 
 const Collapsible = ({ children, title, defaultOpen = false }: { children: React.ReactNode, title: string, defaultOpen?: boolean }) => {
@@ -180,6 +181,9 @@ export default function App() {
                 </a>
                 <a href="https://scholar.google.com/citations?user=NM6SfiEAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-zinc-400 hover:text-zinc-900 transition-colors">
                   <Globe className="w-4 h-4" /> Scholar
+                </a>
+                <a href="https://drive.google.com/file/d/14V6KjfEMO12uwNQAhY1OMy2d-_vkGXK_/view" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-zinc-400 hover:text-zinc-900 transition-colors">
+                  <FileText className="w-4 h-4" /> Resume
                 </a>
               </div>
             </div>
