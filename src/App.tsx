@@ -51,21 +51,42 @@ const Collapsible = ({ children, title, defaultOpen = false }: { children: React
   );
 };
 
-const Section = ({ title, icon: Icon, children, delay = 0 }: { title: string, icon: any, children: React.ReactNode, delay?: number }) => (
-  <motion.section 
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.5, delay }}
-    className="mb-16"
-  >
-    <div className="flex items-center gap-3 mb-8 border-b border-zinc-200 pb-2">
-      <Icon className="w-5 h-5 text-zinc-500" />
-      <h2 className="text-xl font-semibold tracking-tight text-zinc-900 uppercase text-xs letter-spacing-widest">{title}</h2>
-    </div>
-    {children}
-  </motion.section>
-);
+const Section = ({ title, icon: Icon, children, delay = 0, initiallyOpen = true, collapsible = false }: { title: string, icon: any, children: React.ReactNode, delay?: number, initiallyOpen?: boolean, collapsible?: boolean }) => {
+  const [isOpen, setIsOpen] = React.useState(initiallyOpen);
+  
+  return (
+    <motion.section 
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay }}
+      className="mb-12 md:mb-16"
+    >
+      <div 
+        className={`flex items-center justify-between mb-6 border-b border-zinc-200 pb-2 ${collapsible ? 'cursor-pointer group' : ''}`}
+        onClick={() => collapsible && setIsOpen(!isOpen)}
+      >
+        <div className="flex items-center gap-3">
+          <Icon className="w-4 h-4 md:w-5 md:h-5 text-zinc-500" />
+          <h2 className="text-lg md:text-xl font-semibold tracking-tight text-zinc-900 uppercase text-[10px] md:text-xs letter-spacing-widest">{title}</h2>
+        </div>
+        {collapsible && (
+          <div className="text-zinc-400 group-hover:text-zinc-900 transition-colors">
+            {isOpen ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+          </div>
+        )}
+      </div>
+      <motion.div
+        initial={false}
+        animate={{ height: isOpen ? 'auto' : 0, opacity: isOpen ? 1 : 0 }}
+        transition={{ duration: 0.3, ease: 'easeInOut' }}
+        className="overflow-hidden"
+      >
+        {children}
+      </motion.div>
+    </motion.section>
+  );
+};
 
 const ExperienceItem = ({ title, company, period, description, points, link }: { title: string, company: string, period: string, description?: string, points?: string[], link?: string }) => (
   <div className="mb-10 last:mb-0">
@@ -155,7 +176,7 @@ export default function App() {
   return (
     <div className="min-h-screen bg-[#FDFDFD] text-zinc-900 font-sans selection:bg-zinc-200">
       {/* Header / Hero */}
-      <header className="bg-white border-b border-zinc-100 pt-24 pb-16 px-6">
+      <header className="bg-white border-b border-zinc-100 pt-16 md:pt-24 pb-12 md:pb-16 px-6">
         <div className="max-w-5xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
@@ -164,12 +185,12 @@ export default function App() {
           >
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
               <div>
-                <h1 className="text-6xl font-bold tracking-tighter mb-4">Ariel Anders <span className="text-zinc-300 font-light">PhD</span></h1>
-                <p className="text-xl text-zinc-500 font-medium max-w-2xl leading-relaxed">
+                <h1 className="text-4xl md:text-6xl font-bold tracking-tighter mb-4">Ariel Anders <span className="text-zinc-300 font-light">PhD</span></h1>
+                <p className="text-lg md:text-xl text-zinc-500 font-medium max-w-2xl leading-relaxed">
                   Roboticist & Senior Software Engineer. Architecting reliable autonomous systems for next-generation robotics.
                 </p>
               </div>
-              <div className="flex flex-wrap gap-6 text-xs font-mono uppercase tracking-widest">
+              <div className="flex flex-wrap gap-4 md:gap-6 text-[10px] md:text-xs font-mono uppercase tracking-widest">
                 <a href="mailto:anders.ariel@gmail.com" className="flex items-center gap-2 text-zinc-400 hover:text-zinc-900 transition-colors">
                   <Mail className="w-4 h-4" /> Email
                 </a>
@@ -191,13 +212,13 @@ export default function App() {
         </div>
       </header>
 
-      <main className="max-w-5xl mx-auto px-6 py-20">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
+      <main className="max-w-5xl mx-auto px-6 py-12 md:py-20">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
           
           {/* Left Column: Main Content */}
           <div className="lg:col-span-8">
             
-            <Section title="Professional Experience" icon={Briefcase}>
+            <Section title="Professional Experience" icon={Briefcase} collapsible initiallyOpen={true}>
               <ExperienceItem 
                 title="Senior Algorithms Developer"
                 company="Civ Robotics"
@@ -291,7 +312,7 @@ export default function App() {
               </Collapsible>
             </Section>
 
-            <Section title="Education" icon={GraduationCap} delay={0.1}>
+            <Section title="Education" icon={GraduationCap} delay={0.1} collapsible initiallyOpen={true}>
               <div className="space-y-10">
                 <div>
                   <div className="flex justify-between items-baseline mb-2">
@@ -318,7 +339,7 @@ export default function App() {
               </div>
             </Section>
 
-            <Section title="PhD Research & Thesis" icon={BookOpen} delay={0.15}>
+            <Section title="PhD Research & Thesis" icon={BookOpen} delay={0.15} collapsible initiallyOpen={true}>
               <div className="mb-8">
                 <h3 className="text-2xl font-bold text-zinc-900 mb-4 tracking-tight">
                   Reliably arranging objects: a conformant planning approach to robot manipulation
@@ -418,7 +439,7 @@ export default function App() {
               </Collapsible>
             </Section>
 
-            <Section title="Academic & Impact Projects" icon={Terminal} delay={0.25}>
+            <Section title="Academic & Impact Projects" icon={Terminal} delay={0.25} collapsible initiallyOpen={true}>
               <div className="mb-8 p-5 bg-zinc-50 rounded-xl border border-zinc-100">
                 <p className="text-sm text-zinc-600 leading-relaxed italic">
                   As a graduate and undergraduate student studying engineering, I participated in many hands-on projects. Some of these were created from coursework and research. Other projects are motivated by my interest in mental wellness and sustainability.
@@ -494,7 +515,7 @@ export default function App() {
               </Collapsible>
             </Section>
 
-            <Section title="Publications" icon={BookOpen} delay={0.3}>
+            <Section title="Publications" icon={BookOpen} delay={0.3} collapsible initiallyOpen={true}>
               <div className="space-y-8">
                 <div>
                   <h3 className="text-xs font-mono uppercase tracking-widest text-zinc-400 mb-6">Theses & Major Works</h3>
@@ -576,7 +597,7 @@ export default function App() {
             
             <div className="sticky top-8 space-y-16">
               
-              <Section title="Honors & Recognition" icon={Award}>
+              <Section title="Honors & Recognition" icon={Award} collapsible initiallyOpen={true}>
                 <div className="space-y-8">
                   <div className="group">
                     <a href="https://robohub.org/30-women-in-robotics-you-need-to-know-about-2020/" target="_blank" rel="noopener noreferrer" className="block">
@@ -609,7 +630,7 @@ export default function App() {
                 </div>
               </Section>
 
-              <Section title="Technical Skills" icon={Code2}>
+              <Section title="Technical Skills" icon={Code2} collapsible initiallyOpen={true}>
                 <div className="space-y-6">
                   <div>
                     <h4 className="text-[10px] font-mono uppercase tracking-widest text-zinc-400 mb-2">Autonomy</h4>
@@ -626,7 +647,7 @@ export default function App() {
                 </div>
               </Section>
 
-              <Section title="Teaching & Leadership" icon={Users}>
+              <Section title="Teaching & Leadership" icon={Users} collapsible initiallyOpen={true}>
                 <div className="space-y-8">
                   <div className="group">
                     <a href="https://www.eecs.mit.edu/2022-eecs-awards/" target="_blank" rel="noopener noreferrer" className="block">
@@ -647,7 +668,7 @@ export default function App() {
                 </div>
               </Section>
 
-              <Section title="Impact Projects" icon={Lightbulb}>
+              <Section title="Impact Projects" icon={Lightbulb} collapsible initiallyOpen={true}>
                 <div className="space-y-8">
                   <div className="group">
                     <h4 className="text-sm font-bold text-zinc-900">Accessible Tech</h4>
