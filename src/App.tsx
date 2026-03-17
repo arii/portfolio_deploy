@@ -660,11 +660,6 @@ export default function App() {
                 </div>
               </Section>
 
-              <div className="pt-12 border-t border-zinc-100">
-                <p className="text-[10px] font-mono text-zinc-400 italic leading-relaxed">
-                  "Try to be a rainbow in someone's cloud."<br/>– Maya Angelou
-                </p>
-              </div>
 
             </div>
           </div>
