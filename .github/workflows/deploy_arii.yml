@@ -1,0 +1,66 @@
+# Workflow for building in 'deploy_portfolio' and pushing to 'arii.github.io'
+name: Deploy Portfolio to Main Site
+
+on:
+  push:
+    # Triggers the workflow on any branch push in this repository
+    branches: ["**"] 
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main branch
+        uses: actions/checkout@v4
+        with:
+          # This ensures that even if the workflow is on another branch,
+          # it pulls the code from main to build the site.
+          ref: main 
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build project
+        # Since this is for your main user page (arii.github.io), 
+        # the base must be the root "/"
+        run: npm run build -- --base=/
+
+      - name: Deploy to arii.github.io
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          # This requires a Personal Access Token stored in your 
+          # deploy_portfolio Secrets as DEPLOY_TOKEN
+          token: ${{ secrets.DEPLOY_TOKEN }}
+          repository-name: arii/arii.github.io
+          branch: main
+          folder: dist
+          clean: true
+          clean-exclude: |
+            phd/
+            img/
+            CSAIL_And_You_Know_It.mp3
+            CSAIL_And_You_Know_It.ogg
+            anders.png
+            img/
+            phd/  
+            reports/  
+            rj/
+            .nojekyll
