@@ -605,6 +605,23 @@ export default function App() {
                 </div>
               </Section>
 
+              <Section title="Technical Skills" icon={Code2}>
+                <div className="space-y-6">
+                  <div>
+                    <h4 className="text-[10px] font-mono uppercase tracking-widest text-zinc-400 mb-2">Autonomy</h4>
+                    <p className="text-xs text-zinc-700">Motion Planning, TAMP, Social Navigation, Behavior Trees, Mobile Manipulation</p>
+                  </div>
+                  <div>
+                    <h4 className="text-[10px] font-mono uppercase tracking-widest text-zinc-400 mb-2">Languages</h4>
+                    <p className="text-xs text-zinc-700">Python, C++, TypeScript, Matlab, SQL, Shell (Bash/Zsh)</p>
+                  </div>
+                  <div>
+                    <h4 className="text-[10px] font-mono uppercase tracking-widest text-zinc-400 mb-2">Tools & OS</h4>
+                    <p className="text-xs text-zinc-700">ROS 1/2, Linux, GitHub Actions, Gemini API, Docker, AWS IoT, Unix, Mac, Windows</p>
+                  </div>
+                </div>
+              </Section>
+
               <Section title="Teaching & Leadership" icon={Users}>
                 <div className="space-y-8">
                   <div className="group">
@@ -639,23 +656,6 @@ export default function App() {
                   <div>
                     <h4 className="text-sm font-bold text-zinc-900">Lab Sustainability</h4>
                     <p className="text-xs text-zinc-500 mt-1 leading-relaxed">Research on improving laboratory fume hood efficiency and safety feedback.</p>
-                  </div>
-                </div>
-              </Section>
-
-              <Section title="Technical Skills" icon={Code2}>
-                <div className="space-y-6">
-                  <div>
-                    <h4 className="text-[10px] font-mono uppercase tracking-widest text-zinc-400 mb-2">Autonomy</h4>
-                    <p className="text-xs text-zinc-700">Motion Planning, TAMP, Social Navigation, Behavior Trees, Mobile Manipulation</p>
-                  </div>
-                  <div>
-                    <h4 className="text-[10px] font-mono uppercase tracking-widest text-zinc-400 mb-2">Languages</h4>
-                    <p className="text-xs text-zinc-700">Python, C++, TypeScript, Matlab, SQL, Shell (Bash/Zsh)</p>
-                  </div>
-                  <div>
-                    <h4 className="text-[10px] font-mono uppercase tracking-widest text-zinc-400 mb-2">Tools & OS</h4>
-                    <p className="text-xs text-zinc-700">ROS 1/2, Linux, GitHub Actions, Gemini API, Docker, AWS IoT, Unix, Mac, Windows</p>
                   </div>
                 </div>
               </Section>
