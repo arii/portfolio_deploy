@@ -222,7 +222,7 @@ export default function App() {
               <ExperienceItem 
                 title="Senior Algorithms Developer"
                 company="Civ Robotics"
-                period="Sept 2025 – Present"
+                period="Sept 2025 - April 2026"
                 points={[
                   "Developing core navigation and localization software for autonomous forklifts using C++, Python, and ROS 2.",
                   "Built and optimized IMU drivers and GPS filtering; implemented tilt-compensation logic to refine pose estimation.",
