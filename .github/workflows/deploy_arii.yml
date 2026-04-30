@@ -54,6 +54,7 @@ jobs:
           folder: dist
           clean: true
           clean-exclude: |
+            tech-dancer
             phd/
             img/
             CSAIL_And_You_Know_It.mp3
