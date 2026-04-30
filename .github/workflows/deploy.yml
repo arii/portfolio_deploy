@@ -5,7 +5,7 @@ on:
   push:
     # This allows you to trigger the workflow by pushing to any branch
     # Update this if you want it to trigger on a specific "work" branch
-    branches: ["**"] 
+    branches: ["main"]
   workflow_dispatch:
 
 permissions:

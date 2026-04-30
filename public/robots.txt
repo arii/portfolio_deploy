@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Main portfolio sitemap
+Sitemap: https://arii.github.io/sitemap.xml
+
+# Tech-Dancer sub-project sitemap
+Sitemap: https://arii.github.io/tech-dancer/sitemap.xml
