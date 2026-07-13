@@ -1,0 +1,25 @@
+{
+  "github_repo": "arii/portfolio_deploy",
+  "base_branch": "origin/main",
+
+  "core_dirs": [
+    "src/components/",
+    "src/layouts/",
+    "src/pages/"
+  ],
+  "audit_check_dirs": [
+    "src/components",
+    "src/pages",
+    "src/layouts",
+    "src/index.css"
+  ],
+
+  "vite_base_path": "/portfolio_deploy/",
+
+  "ai_token_input_limit": 800000,
+  "ai_token_output_limit": 200000,
+  "ai_token_total_limit": 1000000,
+
+  "max_ci_duration_minutes": 15,
+  "visual_snapshot_pixel_threshold": 0.1
+}
