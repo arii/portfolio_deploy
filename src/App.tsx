@@ -51,7 +51,7 @@ const Collapsible = ({ children, title, defaultOpen = false }: { children: React
   );
 };
 
-const Section = ({ title, icon: Icon, children, delay = 0, initiallyOpen = true, collapsible = false }: { title: string, icon: any, children: React.ReactNode, delay?: number, initiallyOpen?: boolean, collapsible?: boolean }) => {
+const Section = ({ title, icon: Icon, children, delay = 0, initiallyOpen = true, collapsible = false }: { title: string, icon: React.ElementType, children: React.ReactNode, delay?: number, initiallyOpen?: boolean, collapsible?: boolean }) => {
   const [isOpen, setIsOpen] = React.useState(initiallyOpen);
   
   return (
