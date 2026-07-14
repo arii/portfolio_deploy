@@ -1,4 +1,8 @@
 {
   "github_repo": "arii/portfolio_deploy",
-  "vite_base_path": "/"
+  "vite_base_path": "/",
+  "base_branch": "origin/main",
+  "core_dirs": ["src/"],
+  "monolithic_pr_threshold": 10,
+  "max_diff_chars": 100000
 }
