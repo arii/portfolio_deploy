@@ -24,15 +24,15 @@
     "test": "echo 'No tests defined'",
     "knip": "echo 'Skipping knip'",
     "agent:prime": "PYTHONPATH=boomtick-pkg/cli python3 boomtick-pkg/cli/dev_tools/resources/build-repo-context.py > .agent-context.json",
-    "impact:analysis": "pnpm exec tsx boomtick-pkg/scripts/impact-analysis.ts",
+    "impact:analysis": "./scripts/run-impact.sh boomtick-pkg/scripts/impact-analysis.ts",
     "impact:build-main": "npm run build",
     "build:review": "npm run build",
-    "impact:gemini-code-review": "pnpm exec tsx boomtick-pkg/scripts/impact-gemini-code-review.ts",
-    "impact:github-models-code-review": "pnpm exec tsx boomtick-pkg/scripts/impact-github-models-code-review.ts",
-    "impact:visual-diff": "pnpm exec tsx boomtick-pkg/scripts/impact-visual-diff.ts",
-    "impact:dom-diff": "pnpm exec tsx boomtick-pkg/scripts/impact-dom-diff.ts",
-    "impact:gemini-review": "pnpm exec tsx boomtick-pkg/scripts/impact-gemini-review.ts",
-    "impact:github-models-review": "pnpm exec tsx boomtick-pkg/scripts/impact-github-models-review.ts"
+    "impact:gemini-code-review": "./scripts/run-impact.sh boomtick-pkg/scripts/impact-gemini-code-review.ts",
+    "impact:github-models-code-review": "./scripts/run-impact.sh boomtick-pkg/scripts/impact-github-models-code-review.ts",
+    "impact:visual-diff": "./scripts/run-impact.sh boomtick-pkg/scripts/impact-visual-diff.ts",
+    "impact:dom-diff": "./scripts/run-impact.sh boomtick-pkg/scripts/impact-dom-diff.ts",
+    "impact:gemini-review": "./scripts/run-impact.sh boomtick-pkg/scripts/impact-gemini-review.ts",
+    "impact:github-models-review": "./scripts/run-impact.sh boomtick-pkg/scripts/impact-github-models-review.ts"
   },
   "dependencies": {
     "@google/genai": "^1.29.0",
