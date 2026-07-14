@@ -3,13 +3,26 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "packageManager": "pnpm@10.28.2",
+  "engines": {
+    "node": "24.x",
+    "pnpm": "10.28.2"
+  },
   "scripts": {
     "dev": "vite --port=3000 --host=0.0.0.0",
     "build": "vite build",
     "preview": "vite preview",
     "clean": "rm -rf dist",
     "lint": "tsc --noEmit",
-    "postinstall": "git config core.hooksPath .githooks || true"
+    "postinstall": "git config core.hooksPath .githooks || true",
+    "check:runtime-files": "node boomtick-pkg/scripts/check-runtime-files.mjs",
+    "doctor": "td-cli doctor",
+    "verify:schemas": "echo 'No schemas to verify'",
+    "lint:python": "echo 'No python files to lint'",
+    "type-check:python": "echo 'No python files to type-check'",
+    "type-check": "tsc --noEmit",
+    "test": "echo 'No tests defined'",
+    "knip": "echo 'Skipping knip'"
   },
   "dependencies": {
     "@google/genai": "^1.29.0",
