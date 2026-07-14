@@ -22,7 +22,8 @@
     "type-check:python": "echo 'No python files to type-check'",
     "type-check": "tsc --noEmit",
     "test": "echo 'No tests defined'",
-    "knip": "echo 'Skipping knip'"
+    "knip": "echo 'Skipping knip'",
+    "agent:prime": "PYTHONPATH=boomtick-pkg/cli python3 boomtick-pkg/cli/dev_tools/resources/build-repo-context.py > .agent-context.json"
   },
   "dependencies": {
     "@google/genai": "^1.29.0",

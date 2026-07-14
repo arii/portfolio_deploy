@@ -1,3 +1,8 @@
 #!/usr/bin/env bash
 # Automatically update submodules after merge
 git submodule update --init --recursive
+
+# Refresh agent context index
+if command -v pnpm >/dev/null 2>&1 && [ -f "package.json" ]; then
+  pnpm run agent:prime || true
+fi
