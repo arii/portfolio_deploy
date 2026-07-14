@@ -174,7 +174,7 @@ const ProjectItem = ({ title, description, link, imageUrl, tags, contain, noGray
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-[#FDFDFD] text-zinc-900 font-sans selection:bg-zinc-200">
+    <div className="min-h-screen bg-zinc-50 text-zinc-900 font-sans selection:bg-zinc-200">
       {/* Header / Hero */}
       <header className="bg-white border-b border-zinc-100 pt-16 md:pt-24 pb-12 md:pb-16 px-6">
         <div className="max-w-5xl mx-auto">
