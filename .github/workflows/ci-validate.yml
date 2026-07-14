@@ -1,0 +1,36 @@
+name: CI Validation
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: read
+  pull-requests: write
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Setup Workspace
+        uses: ./boomtick-pkg/mcp/actions/setup-workspace
+
+      - name: Lint & Typecheck
+        uses: ./boomtick-pkg/mcp/actions/lint-typecheck
+        with:
+          target: "root"
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Anti-Pattern Audit
+        uses: ./boomtick-pkg/mcp/actions/audit
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}

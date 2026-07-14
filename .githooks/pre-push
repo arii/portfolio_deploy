@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# Ensure submodule commits are pushed before parent repo
+git config push.recurseSubmodules check
